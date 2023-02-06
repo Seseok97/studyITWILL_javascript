@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		// ctrl + shift + f 소스코드 정렬
+		// tab (정렬할때) 앞으로 밀기 tab + shift (정렬할때) 땡기기
+		alert("출력문!");
+		document.write("출력문@ <br>"); // 출력문(syso랑 같은(?)그거 ,,)
+		// ctrl + alt +방향키 아래(위): 코드라인 아래로(위로) 복사
+		// ctrl + d : 코드 1줄 삭제
+		document.write("<br>"); //모르겠고 바로 생각안나고 하면 빠르게 구글링 !!
+		document.write("<h1> 양세석</h1>"); //<h1>태그 안에 자동줄바꿈 포함
+		
+		//콘솔창에 출력하기.
+		console.log("안녕하세요 ! 콘솔 로그입니다 !");
+		
+		//1000+2000값을 출력 js
+		document.write("10+20"); //10+20 이 출력됨(연산 X)
+		document.write("<br>");
+		document.write("10"+"20"); //1020 이 출력됨(연산 X) >>> 연결자 + 의 역할
+		document.write("<br>");
+		document.write(10+20); // 30이 출력됨(연산 O) >>> 연산자 +의 역할
+		document.write("<br>");
+		
+		//연산자 + 와 연결자 + 가 혼합되었을때 예시
+		document.write("10" + 20); //1020
+		document.write("<br>");
+		document.write(10+20+"30"); //3030
+		document.write("<br>");
+		document.write("10"+20+30); //102030
+		document.write("<br>");
+		document.write("10"+(20+30)); //1050
+		document.write("<br>");
+		document.write(10+20+("30"+"40")); //303040
+		document.write("<br>");
+		
+		document.write("10 + 20 = " + (10+20)); // 10 + 20 = 30
+		document.write("<br>");
+		
+		//자바 설치경로 화면에 출력
+		
+		document.write("<br>");
+		document.write("수정 전 <br>");
+		document.write("C:\Program Files\ojdkbuild\java-11-openjdk-11.0.15-1\bin");
+		document.write("<br>");
+		document.write("수정 후 <br>");
+		document.write("C:\\Program Files\\ojdkbuild\\java-11-openjdk-11.0.15-1\\bin");
+						//문자열 안에 백슬래시 표기하고 싶으면 두개박으면 됨.
+		document.write("<br>");
+		document.write("H\ne\tl\lo,js!");// 백슬래시가 이스케이프로 인식되어, 몬가 할 놈으로 간주 ;; >> 출력 안됨.
+		document.write("<br>");
+		
+		//백슬래시 활용 >>> 유니코드 활용 !!
+		document.write("<br>");
+		document.write("\U+0041");
+		document.write("<br>");
+		document.write("\U0041");
+		document.write("<br>");
+		document.write("\u0041 >>> \\u0041");
+		document.write("<br>");
+		document.write("\u{1F600}"); // 원형: U+1F600
+						
+						
+	
+		
+		
+		
+		
+	</script>
+</head>
+<body>
+	<h1>출력문.html</h1>
+	
+	숫자 : 1000<br>
+	
+	1000+2000<br> <!-- 단순 출력, 연산 X -->
+	
+	
+</body>
+</html>

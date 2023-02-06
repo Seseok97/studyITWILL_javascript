@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+	<script type="text/javascript">
+		//연산자
+		
+		// 1. 산술연산자: + - */ %
+		
+			var num1 = 100;
+			var num2 = 200;
+			
+			document.write(num1+ "+" +num2+ "="+ (num1+num2) +"<br>");
+			document.write(num1+ "-" +num2+ "="+ (num1-num2) +"<br>");
+			document.write(num1+ "*" +num2+ "="+ (num1*num2) +"<br>");
+			document.write(num1+ "/" +num2+ "="+ (num1/num2) +"<br>");
+			document.write(num1+ "%" +num2+ "="+ (num1%num2) +"<br>");
+		
+		// 과일이 25개, 한상자에 5개씩 저장 가능.
+		// 과일을 모두 포장 할때 필요한 상자의 개수는 ??
+				
+			var fruit = 25;
+			var box = 5;
+		
+			document.write("상자의 개수: " + (fruit / box)+"<br>");
+			document.write("<hr>");
+		
+		// 856 >???> 800 : 모든 3자리가 연산을 했을때 100의 자리만 ??
+		// 732 >???> 700 123 ... 100
+				
+			var numCal = Number(prompt("숫자를 입력해주세요"));
+			
+			document.write("result: "+ parseInt(numCal/100)*100 +"<br>"); // 구글링하니까 parseInt가 나와서 그냥 썼음
+			document.write("연산의 결과: " + Math.floor(numCal/100)*100+"<br>"); // 강사님이 써주신거.
+			
+		//모든 세자리수를 ??? 연산 한다. >> 끝자리가 항상 1
+		// 996 >????> 991
+				
+			document.write("result: " +((Math.floor(numCal/10)*10)+1) +"<br>");
+		
+		// 2. 대입 연산자: =	(오른쪽의 데이터를 왼쪽에 대입하는 연산.)
+// 			  복합대입연산자 (1. + 2.) >> +=, -=, *=, /=, %=
+	
+// 			A += B; >> A = A + B;
+			var A = 10;
+			var B = 2;
+			document.write(A+=B); // 12
+			document.write("<br>");
+			document.write(A+=B); // 14
+			document.write("<br>");
+			document.write(A+=B); // 16
+			document.write("<br>");
+			document.write(A+=B); // 18
+			document.write("<br>");
+			
+			
+			//js를 이용한 표 작성
+			var name =prompt("이름 입력")
+			var age =prompt("나이 입력")
+		
+			var t ="";	
+			t += "<table  border='1' >";
+			t += "<tr>"
+			t += "	<th>이름</th>";
+			t += "	<th>나이</th>";
+			t += " </tr>";
+			t += "<tr>";
+			t += "	<td>" +name+ "</td>";
+			t += "	<td>" +age+ "</td>";
+			t += " </tr>";
+			t += "</table>";
+			
+			document.write(t+"<br>");
+			
+		// 3. 증감연산자 ++ --
+		
+			var A = 100;
+			++A;
+			document.write(A+"<br>"); // 101
+			A++;
+			document.write(A+"<br>"); // 102
+			document.write(++A+"<br>"); // 103 //전위연산: 값 증가 후 사용
+			document.write(A++ +"<br>"); // 103 //후위연산: 값 사용 후 증가 >> '사용'의 기준은 ?? >> ; 이스케이프 !!!
+			document.write(A +"<br>"); // 104
+			document.write(++A +"<br>");
+			document.write(--A +"<br>");
+			document.write(--A +"<br>");
+			document.write(--A +"<br>");
+			document.write(A-- +"<br>"); //102
+		
+		// 4. 비교연산자 >, <, >=, <=, ==, !=, ===, !==
+		// 		> 비교연산의 결과는 항상 Boolean 타입이다.
+		//		> 비교연산자의 연산자위치는 고정되어 있다 !! >> 대입연산자의 논리적구조때문 !!
+		//		> 자바에서 배운 6가지 연산자는 생략.
+		//		> ==, === >> 같은가?
+		// 		> !=, !== >> 다른가?
+				
+			var data1 = 10;
+			var data2 = "10";
+			
+			document.write((data1 == data2) +"<br>");  // t >> data값만 비교(타입 노상관)
+			document.write((data1 === data2) +"<br>"); // f >> data값과 type까지 비교
+			document.write((data1 != data2) +"<br>");  // f >> data 값이 10으로 동일하기때문에 f 반환
+			document.write((data1 !== data2) +"<br>"); // t >> data 값은 10으로 동일하나, 한쪽은 정수이고 한쪽은 문자열이라서 t 반환. 
+			
+		// 5. 논리연산자. &&(AND) ||(OR) !(NOT)
+		//    > 논리표 참조
+		
+		//java로 예를 들면
+		// String name = null;
+		// System.out.println(4>2 && name.length() == 4 ); // err >> name.length >>> null값이라서 길이를 잴 수가없음.(String 데이터타입의 길이를 재주는 메소드)
+		// System.out.println(4<2 && name.length() == 4 ); // f >> 밑에는 왜 실행이 될까? >> &&, AND연산자가 2개있는 그거임 >> false 발견시 연산 중지하고 바로 false 반환하는 ~~..
+		//												   // 의도적으로 짧은 데이터를 앞에 두고 비교해 긴 데이터의 코드를 건너뛰는 식으로 활용 가능함. ex) 아이디/비밀번호 칠때 
+		
+			document.write("<br>");
+		
+		// 6. 삼항 조건 연산자
+		// 조건식? >> t/f를 반환하는 식
+		// 실행문1(참일때 실행되는) : 실행문2(거짓일때 실행되는);
+		// >>> (조건식)? 실행문1 : 실행문2;  >>>> 아래 예시 참조
+		
+		//변수 A,B 100,200초기화, 이때 둘중에 더 큰 값을 출력
+		
+			var A = 100;
+			var B = 200;
+		
+			
+			document.write((A>B)? A:B);
+			document.write("<hr>");
+			(A>B)? document.write(A):document.write(B);
+			document.write("<hr>");
+			
+			A = Number(prompt("숫자 입력"));
+			//변수 A의 값이 양수인지 음수인지 판별.
+			(A>=0)? document.write("A=양수") : document.write("A=음수");
+			document.write("<hr>");
+			
+			// 변수 A의 값이 홀수 / 짝수 판별
+			document.write((A%2 == 0)? "A=짝수":"A=홀수");
+			document.write("<hr>");
+			
+			// 바나나 n개 >> 5개씩 상자에 포장. 이때 필요한 상자개수
+			var quantBanana = Number(prompt("바나나 몇개있나요 ??"));
+			var sizeOfBox = 5;
+			
+		
+			document.write("바나나는 "+quantBanana+"개가 있으니까, ");		
+			(quantBanana%sizeOfBox == 0)?
+					document.write("포장에 필요한 박스는 "+ (quantBanana/sizeOfBox)+"개 입니다.") :
+					document.write("포장에 필요한 박스는 "+ (parseInt(quantBanana/sizeOfBox)+1)+"개 입니다.") ; // 내코드
+			document.write("<hr>");
+			
+			document.write("포장에 필요한 상자의 개수: "+( Math.floor(quantBanana/sizeOfBox)+(quantBanana%sizeOfBox>0? 1:0) ) ); // 강사님 코드
+			
+			
+			
+			
+		
+	</script>
+<body>
+	<h1>연산자</h1>
+
+			<table  border="1" >
+		 	 <tr>
+			    <th>1</th>
+ 			    <th>2</th>
+ 			  </tr>
+ 			  <tr>
+ 			    <td>1</td>
+ 			    <td>2</td>
+ 			  </tr>
+ 			</table>
+		
+	
+	
+</body>
+</html>

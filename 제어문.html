@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+// 		실행문 / 비실행문
+// 			> 실행문
+//				>> 실행문(순차적인 실행)
+// 				>> 제어문(순차적인 실행X)
+//					>>> 조건문 if, if else, if else if, switch-case
+// 					>>> 반복문 for, while, do-while
+// 			> 비실행문: 주석문
+		
+		//조건문: 특정 조건에 따라 코드 실행.
+// 			if(조건식){ 
+// 				조건을 만족할때(조건식 결과 == true) 실행하는 코드 // 비교연산을 실행하면 결과값이 항상 boolean타입이기 때문에 많이 사용함.
+// 			}
+			if(10<20){
+				document.write("20 is bigger.<br>");	
+			}
+			
+			var num = 100;
+			//변수의 값이 양/음 판별
+			if(num>0){
+				document.write("양수입니다."+"<br>");
+			}
+			if(num<0){
+				document.write("음수입니다."+"<br>");
+			}
+			if(num==0){
+				document.write("0입니다."+"<br>");
+			}
+			
+			//변수값의 홀짝 판별
+// 			if(num%2==1){
+// 				document.write("홀수입니다."+"<br>");
+// 			}
+			if(num%2!=0){
+				document.write("홀수입니다"+"<br>"); // 강사님코드
+			}
+			if(num%2==0){
+				document.write("짝수입니다."+"<br>");
+			}
+			
+			if(true){
+				document.write("실행true"+"<br>");
+			}
+			if(1){
+				document.write("실행num"+"<br>");  
+			} // Boolean(0 / null / undefinded / "") == false. 나머지 true
+			
+			var userName = "seseok"; //prompt("사용자의 이름을 입력하세요.");
+			//사용자 이름을 입력했을때 ㅇㅇㅇ님 환영합니다. 출력 + alert
+			//prompt()는 미입력시 공백을 반환하고, 입력시 문자열로 반환한다. 취소할시 null 반환 !
+			
+			if(userName != null && userName != 0){
+// 				alert(userName+"님, 환영합니다.");
+				document.write(userName+"님, 환영합니다."+"<br>");
+			};
+			
+			if(userName){
+// 				alert(userName+"님 환영합니다"); // 강사님 코드, 어차피 미입력시 null이나 0을 반환하기때문에 false값이 뜸 !!
+			};
+
+			//if-else문
+			
+// 				if(조건문){
+// 					조건문이 참일때 실행문
+// 				}else{
+// 					조건문이 거짓일때 실행문
+// 				}
+// 				----------------------------
+// 				if (조건문){
+// 					실행문
+// 				}
+// 				if (조건NOT문){
+// 					조건문이 참일때 실행문
+// 				}
+
+// 				>> 두 if문은 의미가 다르다. 
+// 					>>> 모든 경우의 수를 제어하기 어렵기 때문에 else를 많이 활용 해야 함.
+
+			//if - else if
+// 				if(조건문){
+// 					실행문
+// 				}else if(조건문){
+// 					실행문
+// 				}else if(조건문){
+// 					실행문
+// 				}else if(조건문){
+// 				.... // 수 제한 없음.
+// 				}else{
+// 					실행문
+// 				} // user 믿지말기(비정상적인 접근 생각해야함 !!) >> else if문이 길어지는 이유
+
+			num = 0;
+
+			if(num > 0){
+				document.write("양수입니다."+"<br>");
+			}else if(num < 0){
+				document.write("음수입니다."+"<br>");
+			}else if(num == 0){
+				document.write("0입니다."+"<br>");
+			}else{
+				document.write("정수가 아닙니다."+"<br>");
+			}
+			document.write("<hr>");
+			
+			document.write(( (num > 0)? "양수":(num<0)? "음수":"0" ) +"<br>"); 
+			//삼항연산자는 중복사용이 가능하고, else if와 유사하게 활용 가능하지만 !
+			// >> 코드가 길어지고 이해하기 어려워지기 때문에 else if를 많이 사용한다.
+			
+			(num-parseInt(num) != 0)? document.write("실수입니다."+"<br>") : document.write("정수입니다."+"<br>");
+			
+			
+			var month = 12; // Number(prompt("지금 몇월이신가요?"));
+			// 3~5 봄, 6~8 여름, 9~11 가을, 12~2 겨울
+			if(month == 3 || month == 4 || month == 5){
+				document.write("봄"+"<br>");
+			}else if(month == 6 || month == 7 || month == 8){
+				document.write("여름"+"<br>");
+			}else if(month == 9 || month == 10 || month == 11){
+				document.write("가을"+"<br>");
+			}else if(month == 1 || month == 2 || month == 12){
+				document.write("겨울"+"<br>");
+			}else{
+				document.write("1~12 사이의 데이터를 입력해 주세요."+"<br>");
+			} //강사님은 >=, && 사용하셨음 ~ 
+			  //	>>> 무지성 작성하면 12가 안먹히는 코드가 나옴 !! 숫자상 12월 다음이 1월이 아닌거를 생각하고 작성해야함
+			  
+			document.write("<hr>");
+			 
+			var score = 100; //Number(prompt("학생의 점수를 입력하여 주세요.")); //0 ~ 100
+			//90 ~ 100 : A
+			//80 ~ 89 : B
+			//70 ~ 79 : C
+			//60 ~ 69 : D
+			//0  ~ 59 : F
+			
+			if(score<=100 && score >=90){
+				document.write("A"+"<br>");
+			}else if(score<=89 && score >=80){
+				document.write("B"+"<br>");
+			}else if(score<=79 && score >=70){
+				document.write("C"+"<br>");
+			}else if(score<=69 && score >=60){
+				document.write("D"+"<br>");
+			}else if(score<=59 && score >=0){
+				document.write("F"+"<br>");
+			}else{
+				document.write("0~100사이의 데이터를 입력하세요."+"<br>");
+			} //작성 해 보고 생각한건데, 변수가 중간쯤에 올수 있게 작성해야 할 듯. >> 강사님도 언급하셨다 ㅠㅠ
+			document.write("<hr>");
+			
+			
+			//중첩 if문
+// 			if(조건문){				// 이 조건을 만족하면 !
+// 				if(조건문){			// 아래 조건을 실행하는데 이거도 만족하면 !!
+// 					if(조건문){		// 이 조건도 실행하는데 이거까지 만족하면!!
+// 						...			// 이 실행문을 사용하게 됨.
+// 					}
+// 				}
+// 			}
+			
+			//login 처리 로직
+			// 1. id-pw 입력
+			// 2. id == 회원정보("admin") 비교 
+			// 3-1. id가 맞을때
+			//	> 3-1-1. pw(1234)비교
+			// 		>3-1-1-1. pw가 맞을때, "ㅇㅇㅇ님 로그인 성공!"
+			//		>3-1-1-2. pw가 틀렸을때, "비밀번호 오류!"
+			// 3-2. id가 틀렸을때
+			//	> 3-2-1. pw비교 X, "회원정보가 없습니다!"	
+			
+// 			var id = "admin";
+// 			var pw = "1234";
+			
+// 			var inputId = prompt("ID");
+// 			var inputPw; // = Number(prompt("PW")); // 1
+// 			var errMessage = alert("Wrong ID or PW."); // 우째쓰지 ,,
+			
+// 			if(inputId == id){ // 2
+// 				alert("Hello, Guest!");
+// 				inputPw = Number(prompt("PW"));
+// 				if(inputPw == pw){ // 3-1-1
+// 					alert("Login Success!");
+// 					document.write("Good Morning, " +id+ "!" + "<br>"); // 3-1-1-1
+// 				}else{
+// 					alert("PW error!");
+// 					document.write("Wrong Pw!" + "<br>"); //3-1-1-2
+// 					location.reload(); // 페이지 새로고침
+// 				};
+// 			}else{ // 3-2
+// 				alert("ID error!");
+// 				document.write("Wrong ID!" + "<br>"); // 3-2-1
+// 				location.reload();
+// 			};
+// 프롬프트랑 리로드때문에 전체 주석처리 !! 나중에 참고하거나 작성하면 풀고 해보기 !!
+				document.write("<hr>");
+				
+				
+			//선택문 - switch-case문
+			
+// 			switch(변수){				//위에서부터 내려가면서 값을 확인함.
+// 				case 값1:
+// 					실행문1;
+// 					break;				//break: 이스케이프(코드 실행 중지)
+// 				case 값2:
+// 					실행문2;
+// 					break;
+					
+// 					...
+// 				default:				//else와 유사함.
+// 					실행문default;
+// 			}
+			
+			var num = 10;
+			
+			switch(num){
+				case 10:
+					document.write("10"+"<br>");
+					break; // break를 하지 않으면 break를 찾기 전까지 모든 아래 케이스들이 전부 실행됨 ..(만족하지 않더라도 !!)
+				case 9:
+					document.write("9"+"<br>");
+					break; // 만약 위 케이스에 브레이크가 없다면, 10, 9가 출력됨.
+				case 8:
+					document.write("8"+"<br>");
+					break; // 만약 num=8이고, 이 브레이크가 없으면 case 8과 default가 같이 실행됨.
+				default:
+					document.write("그외 나머지"+"<br>");
+			}
+			// switch-case의 종료
+			// 1) 해당 케이스를 만나서 >> break가 실행되는 경우
+			// 						    >>> 종료
+			// 2) 해당 케이스를 만나서 >> break가 없는 경우
+			//							>>> 이후 모든케이스를 실행하며 break를 찾는다.
+			// 3) default문이 실행되는 경우 >> default문은 항상 switch문의 가장 아래에 위치한다.
+			//   							 >>> 그냥 끝까지 다 실행 했다는 말.
+			
+			document.write("<hr>");
+			
+			score = 65; //Number(prompt("점수")) ;
+			// 100A, 99~90A,89~80B, ... 59~0F
+			var scoreChar;
+			
+			if(90<=score && score <=100){
+				scoreChar = "A";
+			}else if(80<=score && score <=89){
+				scoreChar = "B";
+			}else if(70<=score && score <=79){
+				scoreChar = "C";
+			}else if(60<=score && score <=69){
+				scoreChar = "D";
+			}else if(0<=score && score <=59){
+				scoreChar = "F";
+			}else{
+				scoreChar = "N";
+			};
+			
+			switch(scoreChar){
+				case "A":
+					document.write("A"+"<br>");
+					break;
+				case "B":
+					document.write("B"+"<br>");
+					break;
+				case "C":
+					document.write("C"+"<br>");
+					break;
+				case "D":
+					document.write("D"+"<br>");
+					break;
+				case "F":
+					document.write("F"+"<br>");
+					break;
+				default:
+					document.write("1~100 사이의 점수만 입력하세요."+"<br>"); // 과제 >> 근데 이거 아닌거같긴 한데
+			}
+			
+			var tmpScore = Math.floor((score)/10);
+			switch(tmpScore){
+				case 10:
+// 					document.write("A"+"<br>");
+// 					break;						// case 9가 자동으로 실행되기 때문에 두 줄은 없어도 됨.
+				case 9:
+					document.write("A"+"<br>");
+					break;
+				case 8:
+					document.write("B"+"<br>");
+					break;
+				case 7:
+					document.write("C"+"<br>");
+					break;
+				case 6:
+					document.write("D"+"<br>");
+					break;
+				default:
+					document.write("F"+"<br>"); // 과제 >> 강사님 코드 
+			}
+			var grade = "F"
+			switch(tmpScore){
+				case 10:
+// 					document.write("A"+"<br>");
+// 					break;						// case 9가 자동으로 실행되기 때문에 두 줄은 없어도 됨.
+				case 9:
+					grade ="A";
+					break;
+				case 8:
+					grade ="B";
+					break;
+				case 7:
+					grade ="C";
+					break;
+				case 6:
+					grade ="D";
+					break;
+				default:
+					grade ="F"; // 과제 >> 강사님 코드 2차
+			}
+			document.write(grade+"등급" + "<br>");
+
+			//페이지 이동
+// 			location.href="www.naver.com"; // err, 내 컴퓨터 안에서 네이버가 있는지 찾기때문에,,
+// 			location.href="https://www.naver.com"; // >> 문제없이 네이버로 날아감. 프로토콜을 사용하는거라고 하시던데 한번 알아보기.
+
+			//prompt창 >> 가고자 하는 페이지 주소 입력
+			
+			var inputPage = prompt("어느 페이지로 이동할까요?");
+// 			switch(inputPage){
+// 			case "네이버":
+// 			case "naver":
+// 			case "NAVER":
+// 				alert(inputPage+"로 입력하셨네요. 네이버로 이동합니다.");
+// 				location.href="http://www.naver.com";
+// 				break;
+// 			case "google":
+// 			case "구글" :
+// 				alert(inputPage+"로 입력하셨네요. 구글로 이동합니다.");
+// 				location.href="http://www.google.com";
+// 				break;
+// 			case "daum":
+// 			case "다음":
+// 				alert(inputPage+"로 입력하셨네요. 다음으로 이동합니다.");
+// 				location.href="http://www.daum.net";
+// 				break;
+// 			case "nate":
+// 			case "네이트":
+// 				alert(inputPage+"로 입력하셨네요. 네이트로 이동합니다.");
+// 				location.href="http://www.nate.com";
+// 				break;
+				
+// 			default:
+// 				alert(inputPage+"는 존재하지 않습니다. 올바른 사이트명을 입력해주세요."); // >> 내 코드. 강사님과 차이 많이나면 손보기 !! >> 같았다!
+// 			}
+			
+			var tmp;
+			switch(inputPage){
+			case "네이버":
+			case "naver":
+			case "NAVER":
+// 				alert(inputPage+"로 입력하셨네요. 네이버로 이동합니다.");
+// 				location.href="http://www.naver.com";
+				tmp ="www.naver.com";
+				break;
+			case "google":
+			case "구글" :
+// 				alert(inputPage+"로 입력하셨네요. 구글로 이동합니다.");
+// 				location.href="http://www.google.com";
+				tmp = "www.google.com";
+				break;
+			case "daum":
+			case "다음":
+// 				alert(inputPage+"로 입력하셨네요. 다음으로 이동합니다.");
+// 				location.href="http://www.daum.net";
+				tmp="www.daum.net";
+				break;
+			case "nate":
+			case "네이트":
+// 				alert(inputPage+"로 입력하셨네요. 네이트로 이동합니다.");
+// 				location.href="http://www.nate.com";
+				tmp="www.nate.com";
+				break;
+				
+			default:
+				alert(inputPage+"는 존재하지 않습니다. 올바른 사이트명을 입력해주세요."); 
+			}
+			
+			if(tmp){ // tmp에 값이 들어가 있나~안있나 ~ 봐준다. null/0/undefinded/false일때 미실행 >> 위 case문에서 dafault로 빠지는경우는 tmp에 대입되는 값이 없음 !!!
+			alert(inputPage+"로 입력하셨네요. "+tmp+"로 이동합니다.");
+			location.href="https://"+tmp;   								// 2차 강사님 코드
+			}
+			
+			
+			
+			
+			
+			
+			
+	</script>
+</head>
+
+
+
+
+
+
+<body>
+	<h1>제어문</h1>
+</body>
+</html>
