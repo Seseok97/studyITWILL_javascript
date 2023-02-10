@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+// 뭐 만들었는지 모르겠는데 계산기인듯 ?
+		//계산기 함수 집에서 만들어보기 해본적 있어서 할만할거임
+		
+		// 요 어디 펑션 넣어야됨
+		var result = 0;
+		var num1 = 0;
+		var num2 = 0;
+		var operator = "+";
+		
+		function calculator(num1,num2,operator){
+			if(operator == "+"){
+				result = num1 + num2;
+			}else if(operator == "-"){
+				result = num1 - num2
+			}else if(operator == "*"){
+				result = num1 * num2
+			}else if(operator == "/"){
+				result = num1 / num2
+			}else if(operator == "%"){
+				result = num1 % num2
+			}else{
+				alert("+ , - , * , / , % 중에서 입력하세요 !");
+				document.write("+ , - , * , / , % 중에서 입력하세요 !"+"<br>");
+			}
+		document.write(num1+ operator + num2+ "=" +result+"<br>");
+		}
+		calculator(10,20,"*");
+		//내장함수 : 함수의 선언이 자바스크립트 내부(엔진)에 선언되어 있는 함수
+		// ex) alert(), prompt(), confirm(), pasreInt(), Boolean()
+		
+		//함수 > 1)지역변수 2)전역변수
+		
+// 		var value;		// 전역변수 : 스크립트 전체에서 사용 가능한 변수
+// 		function fn(){
+// 			var value2; // 지역변수 : 특정지역(보통 함수 안)에서만 사용 가능한 변수 >> 범위에 따라 나눠진 변수 구분방법
+// 		}
+		document.write("<hr>");
+		var value = 100;
+		function fn(){
+			document.write(value+"<br>");
+			var value = 200;
+		} // 함수 선언, 호출 하지 않았기때문에 미출력!!
+		
+		fn(); // 함수 호출 안하면 출력도 실행도 안됨 !!!! 코드는 보이는데 출력은 안되니까 이런거로 실수 많이 한다고 함 !!! 
+		document.write(value+"!"+"<br>");
+		//fn() 안에 value는 fn()이 출력 잘 되는걸 보고 !! 넣은것. 출력 해 보고 결과값 확인하기.
+		// 함수 안의 value값은 200인데 바로 위에 doc는 value를 100으로 출력한다.
+		// fn()이 끝나면 100으로 돌아오는거임(?)
+		
+		// 자바스크립트는 같은 변수명을 여러번 선언 가능한데, 다른 언어는 안됨. 한 반에 같은이름 두명 있으면 헷갈리는거랑 비슷한것 !
+		// var 을 사용하는건 편하긴 하지만, 코드가 길어지면 개선이나 수정에서 어렵기 때문에 ~ 다른 선언방법을 사용함.
+		
+		// let , const 타입 하기 전에 var타입에 대해서 ~
+		document.write("<hr>");
+		var value = 100;
+		function fn(){
+			var value2;
+			document.write(value+"<br>");
+			document.write(value2+"<br>");
+			value2 = 200;
+			
+// 			var value2 = 200 >> js는 실행 전에 function들을 미리 확인하고 위와같은 형태로 간단한 변수선언을 해 두기때문에 null이 아니라 undefined가 출력됨.
+						//	 >>> 호이스팅: 상황에 따라서, 변수의 선언을 필요한 영역의 가장 위쪽으로 끌어 올리는 개념 !!!! > JAVA에서 코드 작성할때 항상 변수를 위에 두는거 !!, js는 자동호이스팅을 지원한다.
+		}				//	 >>>> JAVA에서는 에러뜨는 코드가 js에서는 실행되는 이유이기도 하다. > 자바스크립트 엔진 (인터프리터)가 해준다.JAVA의 컴파일러에 해당함.
+		fn();		
+		document.write("<hr>");
+		
+		function fn1(a,b){
+			return a+b
+		}
+		var sum = fn1(10,20);
+		document.write(sum+"<br>");
+		sum = 100; // 변수 재사용(재할당)
+		document.write(sum+"<br>");
+		var sum = 2000; // 변수 재선언
+		document.write(sum+"<br>");
+		
+		// var 타입: 재선언 / 재할당 가능 >> 유연하다 ~
+		// var 타입을 대신해서 사용하는 let, const 타입 !! > ES6 버전 이후
+		document.write("<hr>");
+		// let 타입: 변수를 선언한 블럭 안에서만 사용 가능한 변수.(블럭변수)
+// 			let 변수명
+		function fn3(){
+// 			var sum = 0;		// 기존 var을 이용한 코드
+			let sum = 0;	    // let을 이용한 코드 >> 출력결과는 같다.
+// 			for(var i=1;i<=10;i++){ // 기존 var을 이용한 코드
+			for(let i=1;i<=10;i++){ // let을 이용한 코드 >> 출력결과는 같다.
+				sum += i;
+			}
+			document.write(sum+"<br>");
+			// 재사용
+			sum = 100; // 가능
+			document.write(sum+"<br>");
+			// 재선언
+// 			let sum = 150; //err, Cannot redeclare block-scoped variable 'sum'. >> 블럭 변수인 sum을 재선언 할 수 없다.
+// 			document.write(sum2+"<br>");	//출력 안됨!! 아래 참고
+// 			let sum2 = 500; 				// err, let 타입은 호이스팅을 지원하지 않는다.
+		}
+		fn3();
+		//	let타입: 지정된 영역 안에서만 사용, 재사용 가능, 재선언 불가능, 호이스팅 없음 >> 일반적인 변수
+		document.write("<hr>");
+		
+		//const 타입 : 상수 변수(constant variable), 변하지않는 값을 저장할때 사용하는 타입.
+		function fn4(){
+// 			const value; // err, 생성과 동시에 초기화 해야 함.
+			const value = 100;
+			document.write(value+"<br>");
+			//재사용
+// 			value = 200; // err, 초기화 이후 값 고정됨.
+			//재선언
+// 			const value = 300; // err, 재선언 할수 없다고 나옴.
+// 			document.write(value2+"<br>");
+// 			const value2 = 200; // err, 호이스팅 x // 초기화 이전에 사용 불가
+		}
+		fn4();
+		
+		//const 타입: 지정된 영역에서만 사용, 재사용 불가능, 재선언 불가능, 호이스팅 없음 >> 상수
+		
+		// 변수 값 변경 >> let		(바뀔만한거 전부)
+		// 변수 값 고정 >> const 	(원주율같은거)
+		// >> ES6 버전 이후에 사용 가능하고, 업무 보기가 쉬움 !!! 이전 버전에서는 var
+		
+		// 그럼 var는?? 
+		// >> 함수의 시작부분에서만 선언해서 사용(재선언 하지않기) >> 쓸수있는데, 의식적으로 안쓰는거다 !!
+		// >>> 전역변수의 개념으로 사용하는데, 최소한으로 사용해야 한다 !!
+		
+		// 불편하고 귀찮을수 있지만, 코드 가독성은 개발자의 편의성과 반비례한다.
+		// 가독성은 이후 디버깅에서 중요한 역할을 한다 !! 무시하면 안됨.
+		
+		//즉시실행 함수
+		// 함수를 정의와 동시에 호출하는 법.
+		
+// 		function(){ // 그냥 냅두면 식별자가 필요하다고 뜸
+// 			alert("즉시 실행함수");
+// 		}
+		
+		(
+		function(){ 
+			alert("즉시 실행함수");
+			}()
+		); //(함수();); 의 형태임.
+		(
+		function(name){ 
+			alert("즉시 실행함수"+name);
+		}("itwill")
+		);
+		document.write("<hr>");
+		// 함수 실행 테스트 할때 사용 가능.
+		
+		//화살표 함수(=>) >> 자바의 람다식. 함수를 간단하게 표시하는 방법 !!
+		
+// 		const c = function(){ // 익명함수 선언
+// 			return "Hello";   
+// 		}
+// 		document.write(c()+"<br>");
+		
+		// 위 코드를 화살표함수로 표현하면 
+		
+// 		const c = () => { return "Hello";}
+		// function 삭제 >> () => 추가
+		
+		const c = () => "Hello";
+		// 실행문이 1줄일경우 {}중괄호, return 생략 가능 // 리턴생략 안하면 에러나는듯 ??
+				
+// 		function test(){
+// 			alert('test');
+// 		}
+		
+		// 화살표함수로 표현하면
+		
+		const test = () => alert('test');
+		
+		// 매개변수가 1개인경우 ()괄호 생략 가능, 1개 이상은 생략하지 않음.
+// 		a => alert('test');
+// 		(a,b) => alert('test');
+		
+		
+		document.write("<hr>");
+		
+		
+		
+
+
+
+
+	</script>
+</head>
+<body>
+<h1>함수</h1>
+
+
+</body>
+</html>
