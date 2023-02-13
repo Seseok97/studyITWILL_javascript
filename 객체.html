@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type=text/javascript>
+// 객체(Object, 개체) >> (강사님 한마디, 만약 객체가 무엇이냐는 질문을 받으면 >> 복잡하게 정리해서 설명하기 보다, 아는것을 순서대로 나열하는것이 나을수 있다.)
+// 교재 554p
+// > 내 눈앞에 보이는 모든것.
+// > 객체추상화 작업: 프로그래밍에서 사용할 객체들을 선택.
+// > 객체의 성질은 두가지로 나눌 수 있다.
+// > 1)속성(Property) 2)기능(Method)
+
+// 모니터를 객체라고 생각하면
+// > 1)속성: 모델명, 사이즈, 가격, 브랜드, 색깔 ....
+//			>> '변수'를 사용하여 정보 저장
+// > 2)기능: 밝기, 명도, 채도, 전원, 소리 조절 ....
+//			>> '함수(메서드)'를 사용하여 동작(실행문) 저장
+// > 위 속성과 기능을 하나로 합치면 모니터인것으로 인지하도록 하여아 한다. > 모니터마다 기능이 다른것처럼, 항상 같을 수는 없다 !! 
+
+// 데이터 = 변수 + 실행문(함수) >데이터를 담아두는 장소> 객체
+// 변수랑 함수 막 쓰는거랑 차이가 있으니까 객체라는 개념을 쓰겠지 ,, >> 편의점에서 비닐봉다리 받는거랑 비슷한 개념이다.
+// 변수와 실행문이 나열되어 있어도 한번에 다 들고 전달하기는 어렵기때문에 객체로 묶어서 전달하는것.
+
+// 자주 사용되는 예시 : 자바 > 붕어빵. 
+// 							 > 붕어빵틀과 재료가 있으면 >> 붕어빵을 여럿 만들수 있다. 
+//							 > 조리를 해야 !! 붕어빵이 완성 된다. >> (아래) 인스턴스(메모리에 올리는것) = 조리
+
+
+// 객체의 사용 > 인스턴스 (메모리에 올라간 객체)
+// new 객체명(); // 자바에서의 생성자, js에서는 중요한 개념이 아니라서 안배울거임
+//  자바 >> 재료 만들어서 팔기, js >> 재료 사서 팔기
+
+// 자바스크립트의 객체 > 이미 만들어진 객체들을 활용
+
+// 1) 내장객체
+//	>> 자바스크립트 엔진(내부)에 내장되어있는 객체.
+//	>>> 문자(String), 날짜(Date), 수학(Math), 배열(Array)...
+
+// 2) 브라우저 객체모델(BOM)
+//	>> 브라우저에 내장되어있는 객체.(Browser Object Model)
+//	>>> window, location, history ...
+
+// 3) 문서 객체모델(DOM)
+//	>> html 문서를 객체로 표시한것. (Document Object Model)
+//	>>> 각종 태그들(<>안에 들어가는것)!!!
+
+// 객체 생성
+// new Object(); >>아직 메모리 어디 올라갔는지 모른다 ~										> 사물함이 있다는건 아는데, 번호를 받지 못한 상태
+// var 참조변수 = new Object(); >> (변수명)에 올렸다고 표시함. 								> 사물함의 번호를 지정받은 상태.
+// 참조변수(Reference) > 객체를 저장하는 변수(X) 객체의 위치(메모리주소)를 저장하는 변수(O) > 변수 = 책상, 객체 = 사물함 >> 사물함을 객체에 저장할 수는 없다 !! 위치만 표시 해 주는것.
+
+//TV라는 객체를 생성해보자.
+var TV = new Object();		// 참조변수 TV, 객체 Object
+//속성Property
+// > 모델명, 사이즈, 가격 ...
+TV.model = "삼성 TV"; // '.'='의' >> TV의 모델명 ="삼성 TV"; 와 같은 의미
+// 크기 - 100인치
+TV.inch = "100inch";
+// 가격 - 200만원
+TV.price = "200만원";
+document.write("Tv Model: "+ TV.model+"<br>");
+document.write("Tv size: "+ TV.inch+"<br>");
+document.write("Tv price: "+ TV.price+"<br>");
+
+document.write("<hr>");
+
+// LG티비, 크기 120인치, 가격 300만원
+var LGtv = new Object();
+LGtv.model = "LG 테레비"; // 변수 재활용하면 안됨(?, 확인필요) >> 나는 일단 따로 만들어 본거 .. 
+LGtv.inch = "120인치";
+LGtv.price = "300만원";
+document.write("LG TV MODEL: "+LGtv.model+"<br>");
+document.write("LG TV size: "+LGtv.inch+"<br>");
+document.write("LG TV price: "+LGtv.price+"<br>");
+
+document.write("<hr>");
+
+//기능Method
+// > 전원On/Off, 채널변경, 소리조절 ...
+
+//티비 기능 > 전원 On/Off
+
+// function TVOnOff(){
+// 	document.write("테레비 켠다"+"<br>");
+// 	document.write("테레비 끈다"+"<br>");
+// }
+// 객체에 사용하는 형태로 변경하면
+// TV.Onoff= function(){ // 익명함수
+// 	document.write("테레비 켠다"+"<br>");
+// 	document.write("테레비 끈다"+"<br>");
+//}
+
+document.write("<hr>");
+//테레비 켜기 + 모델명 확인 + 전원상태 확인
+
+// TV.OnOff = function(){
+// 	TV.power = false;
+// 	document.write("Model: "+TV.model+"<br>");
+// 	if(TV.Power){
+// 		document.write("TV power OFF"+"<br>");
+// 		TV.Power = false;
+// 	}else{
+// 		document.write("TV power ON"+"<br>");
+// 		TV.Power = true
+// 	}
+// 	document.write("전원상태: "+TV.power+"<br>");
+// }
+// TV.OnOff();
+
+// TV.OnOff = function(){ // 강사님 코드 나중에 따라적기
+// 	TV.power = false;
+// 	TV.power = !TV.power
+	
+// 	if(TV.power){
+// 		//모델명
+		
+// 		//전원상태
+// 	}
+// }
+
+//휴대폰 객체 생성 > 친구한테 오늘 점심 뭐먹지 ? 메세지 전송
+
+		var mobile = new Object();
+		mobile.status = false;
+		
+		mobile.statusCheck = function(){
+			mobile.status = !mobile.status ;
+		}
+		mobile.sendMessage = function(){
+			var who = prompt("누구에게 메세지를 보낼까요?")
+			var inputMessage = prompt("메세지를 입력하세요.")
+			document.write(who+"님에게 " + inputMessage + "라고 메세지를 보냅니다."+"<br>");
+		}
+		
+		if(mobile.status){
+			mobile.sendMessage();
+		}else{
+			mobile.statusCheck();
+			mobile.sendMessage();
+		}
+		
+// var Phone = new Object();
+// Phone.power = false;
+// Phone.tel = "아이티윌(051-000-0000)"
+
+// //onoff
+// Phone.OnOff = function(){
+// 	Phone.power = !Phone.power;
+// }
+// //send message
+// Phone.sendMSG = function(){
+// 	document.write(Phone.tel+" : 오늘 점심 뭐먹지?"+"<br>");
+// }
+// if(Phone.power){					// on
+// 	Phone.sendMSG();
+	
+// }else{								// off
+// 	Phone.OnOff();
+// 	Phone.sendMSG();
+// }
+
+
+
+
+
+
+
+
+document.write("<hr>");
+var now = new Date();
+document.write("현재 시각은 "+now.toLocaleString()+"<br>");
+
+
+
+
+
+
+</script>
+</head>
+<body>
+	<h1>객체.html</h1>
+
+</body>
+</html>
