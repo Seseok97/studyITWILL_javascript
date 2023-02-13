@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	// 날짜 객체 Date
+	
+	var today = new Date(); // 속성이 뭐가 있을까 ?? : 년도, 월, 일, 요일, 시,분,초 시간 기준 ...
+	document.write(today+"<br>");
+	today.getFullYear();							// getFullyear 메서드는 return만 하는 메서드이기 때문에, 바로 출력되지 않음.
+	today.getMonth();
+	today.getDate();
+	today.getDay();
+	document.write(today.getFullYear()+"년<br>");		// return만 하는 메서드는 이렇게 해야 출력된다.
+	document.write((today.getMonth()+1)+"월<br>");	 	// getMonth 0~11 ... 1 > 2월
+	document.write(today.getDate()+"일<br>");			// getDate 1~31
+	document.write(convertDay(today.getDay())+"요일<hr>");			// getDay 0~6 ... 0 > 일요일
+	
+	function convertDay(){
+	var day="";
+	if(today.getDay()==0){
+			day ="일";
+		}else if(today.getDay()==1){
+			day ="월";
+		}else if(today.getDay()==2){
+			day ="화";
+		}else if(today.getDay()==3){
+			day ="수";
+		}else if(today.getDay()==4){
+			day ="목";
+		}else if(today.getDay()==5){
+			day ="금";
+		}else if(today.getDay()==6){
+			day ="토";
+		} // switch-case문 써도 됨 // switch-case문이 좀 더 가독성이 좋을듯.
+	return day;
+	}
+// 	document.write(convertDay(today.getDay())+"요일<br>");			// getDay 0~6 ... 0 > 일요일 // 원래 밑에 둬야 하는줄 알았는데 위로 올려도 됨 ㅋㅋ
+
+// 2023-2-13 (월) 출력
+
+document.write(today.getFullYear()+"-"+
+		(today.getMonth()+1)+"-"+
+		today.getDate()+" ("+
+		convertDay(today.getDay())+")"+
+		"<hr>");
+		
+// 특정 시점의 날짜정보 저장
+// new Date("년/월/일");
+// new Date(년,월-1,일); // > 콤마로 데이터를 구분할 때는 이렇게 해야 한다는데 ,, 왜 빼기 ..?? >> 0~11으로 저장되기 때문에, 출력하기 위해서는 원하는달 -1을 해야 한다 !!
+		
+		
+var wantDay = new Date(2022,11,6);
+var wantDayt = new Date("2022/12/6");
+document.write(wantDay+"<br>");
+document.write(wantDayt+"<br>"); 	
+
+document.write("16강전 날짜는 "+convertDay(wantDayt.getDay())+"요일이다. <br>"); // 위에는 화요일인데 왜 여기는 월요일 ,,, >> convertDay 함수는 today 를 받아오기때문에 그렇다 !!
+
+//D-day프로그램 만들기
+
+//2023-7-13 종강까지 남은 일수는???
+
+//특정일 - 현재날짜 하면 남은 일수
+// (2023-02-13) - (2023-07-13) =? 가능할까요 ?
+		
+		var D_day = new Date("2023/7/13");
+		
+		document.write((D_day-today)+"<br>"); // 시간정보 >> 남은 일 수를 ms(밀리세컨드)로 표시한 것. >> 이거를 일수로 바꿔주면 되겠죠?
+		//1s = 1000ms / 1m=60s=60*1000 / 1h = 60m = 3600s = 3600*1000s / 1d=24 * 60*60*1000		
+		
+		document.write(24*60*60*1000+"<br>");
+		document.write(Math.floor((D_day-today)/86400000)+"<br>");
+		document.write("종강까지 남은 일수는 " +(Math.ceil((D_day-today)/(24*60*60*1000)))+ "일 입니다.<br>");	//올림: Math.ceil()
+		
+		
+		
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+</head>
+<body>
+	<h1>내장객체.html</h1>
+</body>
+</html>
