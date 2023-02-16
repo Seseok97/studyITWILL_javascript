@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	// 이벤트 : 브라우저에서 클라이언트가 수행하는 모든 동작
+	// 이벤트핸들러 : 이벤트 발생시 특정 문장(자바스크립트문)을 실행하는 것.
+	// 이걸 다 외울수는 없다 !! ctrl + space 누르면 사용 가능한 이벤트핸들러가 나오니까 찬찬히 살펴보고, 필요한걸 가져다 쓰자.
+	
+	
+	</script>
+</head>
+<body>
+<h1>이벤트.html</h1>
+
+	<input type="button" value="버튼 1" onclick="alert('클릭');" >
+	<input type="button" value="버튼 2" ondblclick="alert('클릭');" >
+	<input type="button" value="버튼 3" onmouseover="alert('클릭');" >
+	
+	<hr>
+	
+	<input type="text" onkeyup="alert('입력');">
+	
+	<hr>
+	<!-- tr에 마우스를 올렸을때 컬러를 변경해보자. -->
+	<table border="1">
+		<tr bgcolor="yellow"
+		 onmouseover="style.background='green'"
+		 onmouseout="style.background='yellow'">
+			<th>이름</th>
+			<th>주소</th>
+		</tr>
+		<tr bgcolor="yellow"
+		 onmouseover="style.background='green'"
+		 onmouseout="style.background='yellow'">
+			<td>양세석</td>
+			<td>부산시 동래구 중앙대로</td>
+		</tr>
+		<tr bgcolor="yellow"
+		 onmouseover="style.background='green'"
+		 onmouseout="style.background='yellow'">
+			<td>양세석</td>
+			<td>부산시 동래구 중앙대로</td>
+		</tr>
+		<tr bgcolor="yellow"
+		 onmouseover="style.background='green'"
+		 onmouseout="style.background='yellow'">
+			<td>양세석</td>
+			<td>부산시 동래구 중앙대로</td>
+		</tr>
+		<tr bgcolor="yellow"
+		 onmouseover="style.background='green'"
+		 onmouseout="style.background='yellow'">
+			<td>양세석</td>
+			<td>부산시 동래구 중앙대로</td>
+		</tr>	
+	</table>
+
+</body>
+</html>
