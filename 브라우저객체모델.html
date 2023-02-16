@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>브라우저 객체모델(BOM)</title>
+<script type="text/javascript">
+	//브라우저 객체모델(BOM): 사용하는 일반적인 웹 브라우저를 객체로 표시
+	// > 객체 계층형 구조 - window객체(최상위 객체)
+	
+	document.write(window+"<br>");
+	console.log(window)
+
+
+// 	window.location.href;
+	// > window 객체는 최상위 객체이기 때문에, 생략이 가능하다.(모든 객체를 포함하고 있기 때문 !!)
+	window.document.write("** <br>")
+	// window객체 아래의 document객체가 가진 write 함수를 사용하라.
+	// =
+	document.write("**"+"<br>");
+	// document객체가 가진 write 함수를 사용하라.
+	
+// 	alert(); // >> 얘는 ?? window.alert()가 원형인 것이다 !!
+			
+		
+	// window.open(); // >> 새 창(탭) 열기
+	// window.open(주소, 창이름, 옵션) // 옵션으로 크기 바꾸면 새 창으로 열리고, 그런거 없이 그냥 열면 새 탭으로 열린다 !!
+// 	window.open();
+// 	window.open("https://www.naver.com","","width=300, height=200,left=700,top=500");
+
+function myOpen(){
+	window.open('새창.html','','width=300,height=300')
+}
+
+
+	//document객체
+	
+	function fn1(){
+// 		alert(window.document);
+		console.log(window.document);
+		alert(window.document.title);
+		window.document.title = "아이티윌";
+		alert(window.document.location);
+		alert(document.bgcolor);
+		alert(document.fgcolor);
+	}
+	function colorChange(){
+		var r = Math.floor(Math.random()*256)
+		var g = Math.floor(Math.random()*256)
+		var b = Math.floor(Math.random()*256)
+		console.log(r+"/"+g+"/"+b);
+		document.bgColor='rgb('+r+','+g+','+b+')';
+	}
+	
+	function colorRadio(c){
+		document.bgColor = c;
+	}
+	
+	//location객체
+// 	location.href="이벤트.html"; //이벤트.html으로 페이지 이동 !!(새 창 열리는게 아니라, 이 페이지가 그냥 바뀌는거 !!!!)
+	// 다른 창으로 날라가서 주석처리
+	
+	//http://localhost:8088/JavaScript7/js1/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EA%B0%9D%EC%B2%B4%EB%AA%A8%EB%8D%B8.html
+	// location.protocol; location.hostname; location.port; ... 로케이션 객체의 정보들
+	
+// 	location.reload(); // 새로고침(이거만 있으면 무한 새로고침), 웹 브라우저에 있는 새로고침 키랑 같은 로직으로 움직인다.
+	//무한 새로고침이라 주석처리
+	
+	//screen객체
+// 	alert(screen.width);	//1920 가로
+// 	alert(screen.height);	//1080 세로  >> 해상도
+	// 경고창때문에 주석처리
+	
+	//history객체: 클라이언트가 방문한 페이지 정보를 기억해서 페이지를 이동하게 한다 !!
+	// ex) 뒤로가기, 앞으로가기가 대표적 !!
+	
+	//navigator객체 : 유저보다는 개발자가 자주 사용하는 객체.
+	// > 페이지에 방문하는 클라이언트의 정보를 저장한다 !!!!!
+	// > 사용자의 브라우저, OS 확인 가능 !!
+// 	alert(navigator.userAgent); //> 크롬의 경우 크롬 브라우저로 들어오는것과 다른 브라우저로 들어왔을때 넘버차이가 있어서 알수있다 !!
+	//경고창이 떠서 주석처리
+	
+	
+	
+	
+	
+	
+		
+
+
+</script>
+</head>
+<body>
+<h1>브라우저 객체 모델.html</h1>
+
+	<input type="button" value="창 열기" onclick=myOpen()>
+	<input type="button" value="창 닫기" onclick="window.close();">
+	
+	<hr>
+	
+	<input type="button" value="document객체 속성" onclick="fn1()">
+	<input type="button" value="배경색 변경" onclick="colorChange()">
+	
+	<hr>
+	
+	<input type="radio" name="1" onclick="colorRadio('pink')"> pink
+	<input type="radio" name="1" onclick="colorRadio('orange')"> orange
+	<input type="radio" name="1" onclick="colorRadio('purple')"> purple
+	<input type="radio" name="1" onclick="colorChange()"> randomcolor
+	
+	<hr>
+	
+	<h2>location 객체: 브라우저의 주소창 !!</h2>
+	
+	<a href="페이지2.html"> 2페이지로 이동 </a>
+	<br>
+	<a href="페이지3.html"> 3페이지로 이동 </a>
+	
+	
+	
+	
+	<input type="button" value="창 열기" onclick=>
+	<input type="button" value="창 열기" onclick=>
+					
+
+
+
+</body>
+</html>
