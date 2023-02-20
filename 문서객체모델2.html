@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	
+	//fn1() > "a.jsp"페이지, post 방식 페이지 전송
+	function fn1(){
+		document.fr.action = "a.jsp"; // document.forms[0].action 처음 생각했는데, 가능하다고 하심 !
+		document.forms[0].method = "post";
+		document.forms[0].submit(); // submit을 넣어야 데이터 전달이 가능함.
+	}
+	function fn2(){
+// 		console.log(document.fr.id.type); //document.forms[0].id.type도 동일함 .. id.type을 해야 id의 type을 볼수있다 !! 생각하고 코드치기
+		//아이디입력칸에 정보 입력 "ITWILL"
+// 		document.fr.id.value = "itwill"; // value는 실제 값 정도로 생각하면 될것같은데!
+// 		console.log(document.fr.id.value);
+		// 과제수행을 위해서 ! 주석처리
+		
+		//아이디, 비밀번호, 주민번호, 하고싶은말 데이터가 있는지 없는지 체크하라.
+		if(document.fr.id.value ==""){
+		alert("input id");
+		document.fr.id.focus(); // id입력을 놓쳤을 경우, 외곽선을 bold처리하여 확인케 한다.
+		return false;
+		}else if(!(document.fr.id.value.length >=5 && document.fr.id.value.length<=10)){
+			alert("id must be 5~10 letters.")
+			return false;
+		}
+		if(document.fr.pw.value ==""){
+			alert("input password");
+			document.fr.pw.focus();
+			return false;
+		}
+		if(document.fr.ju1.value ==""){
+			alert("input frontjuminNumber");
+			document.fr.ju1.focus();
+			return false;
+		}
+		if(document.fr.ju2.value ==""){
+			alert("input backjuminNumber");
+			document.fr.ju2.focus();
+			return false;
+		}
+		if(document.fr.txt.value ==""){
+			alert("input hagosipeunmal");
+			document.fr.txt.focus();
+			return false;								// return은 하나씩만 확인하게 하려고 넣는다고 하셨는데 ,,,, 강사님은 if문으로 작성하셔서 넣으라고 하신듯.
+		}
+		
+		// >> 제대로 했다 ㅠㅠ 오랜만인듯 ..
+// 		if(document.fr.id.value.length>=10){ // 이런 방식으로 길이제한도 둘수 있다 !
+// 			alert("id must be shorter than 9 letters.")
+// 		}
+		
+		// '유효성 체크'라고 하는 듯 ??~
+	}//fn2() end
+	
+	//전송버튼 클릭시 모든데이터 입력 확인 후 정보전달
+	function fn3(){ // 해당 코드는 서브밋을 막지를 못함 ..
+		fn2();
+		if(document.fr.id.value !="" &&
+				(document.fr.id.value.length >=5 && document.fr.id.value.length<=10)&&
+				document.fr.pw.value !="" &&
+				document.fr.ju1.value !="" &&
+				document.fr.ju2.value !="" &&
+				document.fr.txt.value !="" 
+				){
+			document.fr.action="a.jsp"
+			document.forms[0].method = "post";
+		}else{
+			alert("Something wrong!");
+			return false;
+		}
+		
+	} // 되게했다 ;;;
+	
+	</script>
+
+</head>
+<body>
+	<h1>문서객체모델2.html</h1>
+	
+	<fieldset>
+	<!-- action="" 값이 없을경우, 자기자신의 페이지로 돌아감. -->
+		<form action="" name="fr"onsubmit="return fn3();">
+			아이디: <input type="text" name="id">
+			<br>
+			비밀번호: <input type="password" name="pw">
+			<br>
+			주민번호: <input type="text" name="ju1" maxlength="6"> - <input type="text" name="ju2" maxlength="7"> 
+			<br>
+			하고싶은말: <textarea rows="5" cols="10" name="txt"></textarea>
+			<br>
+			<hr>
+			<!-- 클릭+전송 -->
+			<input type="submit" value="전송" >
+			<hr>
+			<input type="button" value="폼태그 속성설정" onclick="fn1()">
+			<input type="button" value="폼태그 요소(input) 속성" onclick="fn2()">
+		
+		</form>
+	</fieldset>
+
+</body>
+</html>
