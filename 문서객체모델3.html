@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	function fn1(){
+// 		console.log(document.forms[0].gender)
+// 		console.log(document.fr.gender[0].value)
+// 		console.log(document.forms[0].gender.value) // array넘버 지정X >> 선택한 내용의  value출력
+		console.log(document.fr.gender[0].checked) // Array넘버 0의 값이 선택 되었는지 확인 후 t/f 출력(남 체크시 t, 이외 f)
+		
+		if(document.fr.gender[0].checked == false
+			&&	document.fr.gender[1].checked == false
+			&&	document.fr.gender[2].checked == false){
+			alert("성별을 선택해주세요.");
+			
+// 			document.fr.gender[0].focus(); // 라디오 버튼은 포커스가 잘 안보임 ;;ㅋㅋ
+			document.fr.gender[0].click(); // 그래서 ! 라디오 버튼에는 아예 기본값으로 click()을 넣는 경우가 있음.
+			return;
+		}
+		var hob = document.fr.hobby; // Array문 저장
+		
+// 		if(document.fr.hobby[0].checked == false
+// 				&& document.fr.hobby[1].checked == false
+// 				&& document.fr.hobby[2].checked == false){
+// 			alert("취미를 선택해주세요.")
+// 			document.fr.hobby[0].click();
+// 			return;
+// 		}// 실습
+		if(hob[0].checked == false
+				&& hob[1].checked == false
+				&& hob[2].checked == false){
+			alert("취미를 선택해주세요.")
+			hob[0].click();
+			return;
+		}// 변수활용하여 코드 줄이기
+		
+		//select태그 속성 >> option속성 !!(.text / .value / .selected(t/f))
+		
+		//<option value="value"> text </option> >> selected? > t, not > f
+		
+// 		console.log(document.fr.room.length) //8,option의 개수
+// 		document.fr.room.selectedIndex // 선택된 option의 위치(Index값으로)
+// 		console.log(document.fr.room.selectedIndex); // '강의장을 선택하세요'를 포함, 0~7 !!
+// 		console.log(document.fr.room.options[0].value); // 1번째 option의 value 불러옴
+
+//		if(document.fr.room.selectedIndex > 1) 
+		if(document.fr.room.options[0].selected == true){ // 0을 골랐다. >> option을 선택하지 않은것으로 생각해도 됨 !!
+			
+		}
+		
+	}//fn1() end
+	
+	</script>
+
+
+</head>
+<body>
+	<h1>문서객체모델3.html</h1>
+
+	<fieldset>
+		<form action="a.jsp" method="get" name="fr">
+		성별: 
+		<input type="radio" name="gender" value="남">남성
+		<input type="radio" name="gender" value="중">밝히길 원치않음
+		<input type="radio" name="gender" value="여">여성 <br>
+		취미:
+		<input type="checkbox" name="hobby" value="게임">게임
+		<input type="checkbox" name="hobby" value="요리">요리
+		<input type="checkbox" name="hobby" value="운동">운동 <br>
+		강의장: 
+		<select name="room">
+			<option value="">강의장을 선택하세요.</option>
+			<option value="1">1강의실</option>
+			<option value="2">2강의실</option>
+			<option value="3">3강의실</option>
+			<option value="4">4강의실</option>
+			<option value="5">5강의실</option>
+			<option value="6">6강의실</option>
+			<option value="7">7강의실</option>
+			<!-- value값을 통하여 전달받는 데이터의 값을 조정할 수 있다. 코드가 깔끔해진다 !! -->
+		</select>
+		<hr>
+		<input type="submit" value="전송">
+		<hr>
+		
+		<input type="button" value="속성확인" onclick="fn1();">		
+		</form>
+	</fieldset>
+
+</body>
+</html>
