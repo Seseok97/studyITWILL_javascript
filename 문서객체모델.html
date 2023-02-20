@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문서객체모델(DOM)</title>
+	<script type="text/javascript">
+	//문서객체모델(Document Object Model, DOM): HTML문서
+	// 사용하는 모든 태그가 객체로 인식된다.
+	// 좀 더 세분화된 내용은 CSS,jQuery 수업 하면서 할거라고 하심
+	
+	//document객체 접근 - 태그객체(form)
+	//
+	
+// 	alert(window.document.fr); // undefined			> 폼태그 이름으로 접근
+// 	alert(window.document.forms[0]); // undefined	> 폼태그 배열로 접근
+
+	function fn1(){
+// 		alert(window.document.fr); //form보다 위에 있음 
+		// 경고창떠서 주석처리
+		console.log(window.document.fr);
+		console.log(document.fr.action);
+		console.log(document.forms[0].method); // form 태그들 중 첫번째 태그의 전송방식을 출력
+}
+	//fn2: "b.jsp"페이지로 get방식을 이용해 데이터 전달 후 이동
+	function fn2(){
+		//alert(window.document.fr2); // 작성해보라고 하셔서 뭐 했는데 이거 아니었음
+		document.fr.action ="b.jsp";
+		document.forms[0].method = "get";
+		
+// 		document.fr.submit; // > 메서드라서, ()괄호 없으면 실행 안됨
+		document.fr.submit();
+	}
+		
+		//submit버튼 클릭시 "c.jsp" - get방식
+	function fn3(){ // if넣어서 하려고 했는데, 생각해보니까 onclick으로 작동하는거니까 굳이 if 없어도 되겠다 !! 했음
+				document.fr.action="c.jsp";
+				document.forms[0].method = "get";
+// 				document.fr.submit(); // 없어도 됨
+		}
+	
+
+	</script>	
+</head>
+<body>
+<h1>문서객체모델(DOM).html</h1>
+	<fieldset>
+		<legend> 폼태그 - 정보 전달 </legend> <!-- 제목 달기 -->
+		<!-- action: 정보를 전달하는 페이지
+			 method: 정보 전달의 방식(GET / POST , 두가지가 흔하다 + REST 배우게 될것)
+			 
+			 * GET 방식: get() >> 전송할 데이터를 주소줄(URL)에 붙여서 정보를 전달하는 방식.
+			 				   >>> 빠른 전송, 256byte 길이제한 !! body 필요 X > 적은양의 데이터 전달에 적합
+			 				   >>> 주소줄에 데이터 노출 (보안취약) >> get()방식이 기본값이다 !!
+			 				   
+			 			ex) http://www.itwill.com?name=값&name=값 ... > 주소창에 뭐가 많이 적혀있음
+			 				   
+			 * POST 방식: post() >> 전송할 데이터를 바디(body)에 담아서 정보를 전달하는 방식.
+			 					 >>> 느린 전송, 데이터 길이제한 X, body필요! > 대량의 데이터 전달에 적합.
+			 					 >>> 데이터 노출X (보안취약X)
+			 					 
+			 			ex) http://www.itwill.com > 주소창만 덜렁있음
+			 			
+			 !! GET,POST는 상대적으로 빠르고/느릴 뿐이고, 보안도 마찬가지이다.
+			 !!  >> 이유는 body에 담냐 /마냐의 차이 !! 한단계 더 추가되어 있느냐 없느냐로 엄청 미세하게 갈리는거니까
+			 !! 	너무 강박적으로 차이를 언급할 필요는 없고, 대답해야 한다면 !! POST는 body를 통하기때문이라고 하면 됨.
+			 
+		 -->
+		 <h3>input요소의 값을 전달(action페이지)</h3>
+		<form action="a.jsp" name="fr" method="post" onSubmit="fn3();">	<!-- method=""미작성시 get() 메서드가 기본 적용됨. -->
+			<!-- input태그 요소를 파라매터로 전달(name 속성 필수 !!) -->
+			<input type="text" name="msg1">
+			<input type="text" name="msg2">
+			<input type="submit" value="전송" > <!--onclick="fn3()"(form태그 안으로 넣는게 좋다.) --> <!-- button태그와 다르다 !! 나중에 submit 작동원리 알아보기 -->
+			<hr>
+			<input type="button" value="폼태그 속성확인" onclick="fn1();"> <!-- 문제없이 실행됨, 클릭하는 시점에는 모든 문서가 불러 와 져있기 때문 !! -->
+	 		<input type="button" value="폼태그 정보변경" onclick="fn2();">
+	 	</form>
+	 <!--	<form action="b.jsp" name="fr2" method="get">
+	 		<input type="button" value="폼태그 정보변경" onclick="fn2();">
+	 	 </form>  강사님이 fn2() 만들어서 해보라고 한건데 fr안에서 변경 가능함 !!-->
+	 </fieldset>
+	 <script type="text/javascript">
+	 
+// 	 	alert(window.document.fr); 
+// 	 	alert(window.document.forms[0]); // 객체라고 출력됨 !!  >> form이 생성된 이후에 실행되서 가능.
+		// 경고창떠서 주석처리
+	 
+	  </script>
+
+
+</body>
+</html>
